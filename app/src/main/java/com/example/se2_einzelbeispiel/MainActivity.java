@@ -15,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.se2_einzelbeispiel.databinding.ActivityMainBinding;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
@@ -43,16 +45,10 @@ public class MainActivity extends AppCompatActivity {
             AnswerCalc.setText("Die Matrikelnummer in reihenfolge ohne Primzahlen: "+Matrikelnummer);
 
         });
-
-
-
-
-
-
-
-
-
-
-
+    }
+    public String SendToServer (String Matrikelnummer) throws IOException {
+        TcpClient tcpClient = new TcpClient(Matrikelnummer);
+        tcpClient.run();
+        return tcpClient.getServerAnswer();
     }
 }
