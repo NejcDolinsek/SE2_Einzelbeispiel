@@ -45,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
             AnswerCalc.setText("Die Matrikelnummer in reihenfolge ohne Primzahlen: "+Matrikelnummer);
 
         });
+
+        //Button to execute the Tcp Client
+        Button BtnServer = findViewById(R. id. BtnSend);
+        BtnServer.setOnClickListener(v -> {
+            EditText InputText = findViewById(R. id. EditTextInput);
+            TextView AnswerServer = findViewById(R. id. AntwortServer);
+
+        });
+
+
+
     }
     public String SendToServer (String Matrikelnummer) throws IOException {
         TcpClient tcpClient = new TcpClient(Matrikelnummer);
