@@ -2,6 +2,7 @@ package com.example.se2_einzelbeispiel;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,6 +17,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.se2_einzelbeispiel.databinding.ActivityMainBinding;
 
 import java.io.IOException;
+
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         BtnServer.setOnClickListener(v -> {
             EditText InputText = findViewById(R. id. EditTextInput);
             TextView AnswerServer = findViewById(R. id. AntwortServer);
+
+            String matrikelnummer = InputText.getText().toString();
+
+            Flowable.fromCallable(()->SendToServer(matrikelnummer))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.single())
+                    .subscribe(Answer -> runOnUiThread(()->AnswerServer.setText(Answer)));
 
         });
 

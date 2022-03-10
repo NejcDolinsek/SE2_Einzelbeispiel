@@ -1,5 +1,7 @@
 package com.example.se2_einzelbeispiel;
 
+import android.view.View;
+
 import java.io.BufferedReader;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
