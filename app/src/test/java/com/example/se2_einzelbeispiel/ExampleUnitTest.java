@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ExampleUnitTest {
 
@@ -28,14 +29,13 @@ public class ExampleUnitTest {
         assertTrue(OrderAndDeletePrimeNumbers.isPrime(7));
     }
     @Test
-    public void StringToArray(){
+    public void TestStringToArray(){
         int [] ArrayMatrikelnummer = {1,1,7,0,4,7,2,6};
         assertArrayEquals(ArrayMatrikelnummer,OrderAndDeletePrimeNumbers.StringToArray(Matrikelnummer));
     }
     @Test
-    public void ArraySorter(){
-        int [] ArraySortedMatrikelnummer = {0,1,1,2,4,6,7,7};
-        assertArrayEquals(ArraySortedMatrikelnummer,MatrikelnummerArray);
-
+    public void TestArraySorter(){
+        String SortedMatrikelnummer ="[0, 1, 1, 2, 4, 6, 7, 7]";
+        assertEquals(SortedMatrikelnummer,OrderAndDeletePrimeNumbers.ArraySorter(MatrikelnummerArray));
     }
 }
